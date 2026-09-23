@@ -1,0 +1,40 @@
+1. 
+C) ao cliente e ao servidor.
+2. 
+A) a dependência de um único serviço, que constitui um ponto único de falha.
+3. 
+E) o número da porta utilizada pelo serviço.
+4.
+B) TCP, porque oferece comunicação orientada à conexão e entrega ordenada.
+5.
+D) Usar UDP e tratar na aplicação as perdas que forem relevantes.
+6.
+C) iniciar o servidor na porta esperada e depois executar o cliente.
+7.
+A) O servidor aguarda a conexão, recebe a solicitação, processa os dados e envia a resposta.
+8.
+E) o envio por UDP, por si só, não garante que o datagrama chegue nem que haja resposta.
+9.
+B) Acordar e documentar o formato da mensagem entre as duas equipes.
+10.
+D) oferece ao cliente uma forma de invocar operações remotas semelhante à chamada de métodos.
+11.
+C) O cliente solicitou a operação e o servidor a executou antes de devolver o resultado.
+12.
+A) A chamada depende da rede e do servidor; o cliente deve considerar atrasos e indisponibilidade.
+13.
+E) a função foi registrada como operação do servidor e o processo foi reiniciado após a mudança.
+14.
+B) serialização dos dados.
+15.
+D) indicar no cliente o endereço alcançável da máquina que executa o servidor e a porta do serviço.
+16.
+C) o cliente recebe a escolha do usuário e solicita ao servidor a execução da operação.
+17.
+A) A aparência de uma chamada de função não elimina a dependência do serviço remoto.
+18.
+E) A chamada remota envolve comunicação e pode ser afetada por falhas ou atrasos fora do processo cliente.
+19.
+Verificar primeiro se o servidor está funcionando, conferir o endereço e a porta e depois verificar se as mensagens estão sendo enviadas e recebidas. Isso ajuda a descobrir se o problema está na comunicação antes de mexer no cálculo do servidor.
+20.
+RPC facilita a chamada de operações remotas, deixando o código do cliente parecido com uma chamada de função. Os parâmetros são enviados ao servidor, que executa a operação e devolve a resposta. Ainda é preciso considerar falhas de comunicação e a disponibilidade do servidor.

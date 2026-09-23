@@ -1,0 +1,42 @@
+cat > servidor.py <<'EOF'
+import socket
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as servidor:
+    servidor.bind(("127.0.0.1", 5005))
+    servidor.listen(1)
+    print("Servidor aguardando conexão na porta 5005", flush=True)
+    conexao, endereco = servidor.accept()
+    with conexao:
+        pedido = conexao.recv(1024).decode("utf-8")
+        print("Pedido recebido:", pedido, flush=True)
+        resposta = "Recebido pelo servidor: " + pedido
+        conexao.sendall(resposta.encode("utf-8"))
+EOF
+
+cat > cliente.py <<'EOF'
+import socket
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as cliente:
+    cliente.connect(("127.0.0.1", 5005))
+    cliente.sendall("PEDIDO-42".encode("utf-8"))
+    resposta = cliente.recv(1024).decode("utf-8")
+    print("Resposta recebida:", resposta)
+EOF
+
+python3 servidor.py > servidor.log 2>&1 &
+sleep 1
+python3 cliente.py
+cat servidor.log
+
+RESULTADO:
+[1] 1496
+Resposta recebida: Recebido pelo servidor: PEDIDO-42
+[1]+  Done                    python3 servidor.py > servidor.log 2>&1
+Servidor aguardando conexão na porta 5005
+Pedido recebido: PEDIDO-42
+
+QUESTÕES: 
+1. 
+R: O cliente iniciou a conexão.
+2. 
+R: O servidor recebeu o PEDIDO-42 e produziu a confirmação.
+3.
+R: O cliente não conseguiria se conectar e apresentaria um erro de conexão.
